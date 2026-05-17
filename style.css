@@ -1,0 +1,217 @@
+:root {
+    --primary-color: #4a90e2;
+    --primary-hover: #357abd;
+    --secondary-color: #50e3c2;
+    --secondary-hover: #3ac0a0;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --card-bg: #fff;
+    --border-radius: 12px;
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.status-panel {
+    display: flex;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #e9ecef;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: white;
+    background-color: #95a5a6;
+    transition: all 0.3s;
+}
+
+.badge.granted { background-color: var(--success-color); }
+.badge.denied { background-color: var(--danger-color); }
+.badge.default { background-color: var(--warning-color); color: #333; }
+.badge.installed { background-color: var(--primary-color); }
+
+.action-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #e9ecef;
+    color: #495057;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #e9ecef !important;
+    color: #adb5bd !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:not(:disabled):hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}
+
+.btn.primary:not(:disabled):active {
+    transform: translateY(0);
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.btn.secondary:not(:disabled):hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(80, 227, 194, 0.4);
+    animation: none;
+}
+
+.btn:not(.primary):not(.secondary):not(:disabled):hover {
+    background-color: #dee2e6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.log-panel {
+    background: #2d3436;
+    color: #dfe6e9;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    height: 180px;
+    overflow-y: auto;
+}
+
+.log-panel h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #b2bec3;
+    border-bottom: 1px solid #636e72;
+    padding-bottom: 8px;
+}
+
+#log-container div {
+    margin-bottom: 6px;
+    border-bottom: 1px dashed #636e72;
+    padding-bottom: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+#log-container div:last-child {
+    border-bottom: none;
+}
+
+.log-time {
+    color: var(--secondary-color);
+    margin-right: 8px;
+}
+
+/* 動畫設定 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(80, 227, 194, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(80, 227, 194, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(80, 227, 194, 0); }
+}
+
+/* 手機響應式調整 */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    .container {
+        padding: 20px;
+        box-shadow: none;
+    }
+    .status-panel {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
