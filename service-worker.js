@@ -76,7 +76,7 @@ self.addEventListener('push', (event) => {
     let payload = {
         title: '收到遠端推播！',
         body: '這是一則預設的推播內容。',
-        icon: './images/icon-192x192.png',
+        icon: './images/diula-logo-192.png',
         url: './'
     };
 
@@ -98,7 +98,7 @@ self.addEventListener('push', (event) => {
     const options = {
         body: payload.body,
         icon: payload.icon,
-        badge: './images/icon-192x192.png',
+        badge: './images/diula-logo-192.png',
         vibrate: [200, 100, 200],
         data: {
             url: payload.url
