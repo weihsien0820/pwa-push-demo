@@ -145,13 +145,13 @@ btnSendNotification.addEventListener('click', () => {
 });
 
 btnScheduleNotification.addEventListener('click', () => {
-    log('計時器啟動，10秒後將發出通知...');
+    log('計時器啟動，5秒後將發出通知...');
     btnScheduleNotification.disabled = true;
     
     setTimeout(() => {
         sendLocalNotification(DIULA_TITLE, DIULA_OPTIONS);
         btnScheduleNotification.disabled = false;
-    }, 10000);
+    }, 5000);
 });
 
 

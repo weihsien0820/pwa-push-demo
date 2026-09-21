@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-push-demo-v5';
+const CACHE_NAME = 'pwa-push-demo-v6';
 
 // 要快取的檔案清單 (使用相對路徑，以配合 GitHub Pages)
 const ASSETS_TO_CACHE = [
