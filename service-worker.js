@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-push-demo-v4';
+const CACHE_NAME = 'pwa-push-demo-v5';
 
 // 要快取的檔案清單 (使用相對路徑，以配合 GitHub Pages)
 const ASSETS_TO_CACHE = [
@@ -57,22 +57,13 @@ self.addEventListener('activate', (event) => {
 });
 
 // === 3. 攔截請求事件 ===
-// 提供離線存取能力。採用 Network First (網路優先) 策略：
-// 有網路時一律抓最新版本並更新快取，只有離線時才使用快取，避免使用者一直看到舊內容。
+// 提供離線存取能力。採用 Cache First (快取優先) 策略。
 self.addEventListener('fetch', (event) => {
-    if (event.request.method !== 'GET') return;
-
     event.respondWith(
-        fetch(event.request, { cache: 'no-cache' })
-            .then((response) => {
-                // 只快取同網域且成功的回應
-                if (response.ok && new URL(event.request.url).origin === self.location.origin) {
-                    const copy = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-                }
-                return response;
-            })
-            .catch(() => caches.match(event.request))
+        caches.match(event.request).then((response) => {
+            // 如果在快取中找到對應的資源，就直接回傳快取；否則透過網路抓取
+            return response || fetch(event.request);
+        })
     );
 });
 
