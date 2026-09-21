@@ -1,6 +1,6 @@
 {
-  "name": "PWA 推播測試專案",
-  "short_name": "PWA推播",
+  "name": "DiuLa!",
+  "short_name": "DiuLa!",
   "description": "這是一個用於測試 Web Push Notification 與 PWA 安裝功能的純前端專案",
   "start_url": "./index.html",
   "display": "standalone",
@@ -8,13 +8,13 @@
   "theme_color": "#4a90e2",
   "icons": [
     {
-      "src": "./images/icon-192x192.png",
+      "src": "./images/diula-logo-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./images/icon-512x512.png",
+      "src": "./images/diula-logo-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

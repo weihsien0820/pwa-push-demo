@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-push-demo-v2';
+const CACHE_NAME = 'pwa-push-demo-v3';
 
 // 要快取的檔案清單 (使用相對路徑，以配合 GitHub Pages)
 const ASSETS_TO_CACHE = [
@@ -7,8 +7,6 @@ const ASSETS_TO_CACHE = [
     './style.css',
     './app.js',
     './manifest.json',
-    './images/icon-192x192.png',
-    './images/icon-512x512.png',
     './images/diula-logo-192.png',
     './images/diula-logo-512.png'
 ];
