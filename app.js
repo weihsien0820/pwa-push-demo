@@ -116,16 +116,32 @@ async function sendLocalNotification(title, options) {
 
 btnRequestPermission.addEventListener('click', requestNotificationPermission);
 
+// DiuLa! 協尋通知內容
+const DIULA_URL = 'https://diula-py.github.io/diula-outter/';
+const DIULA_TITLE = '【DiuLa!】找到 5 件可能是你的皮夾/錢包';
+const DIULA_OPTIONS = {
+    body: [
+        '🔔 DiuLa! 協尋通知',
+        '找到 5 件可能是你要找的「皮夾/錢包」：',
+        '・皮夾（台北市 2026-09-18｜相符度 87%）',
+        '・錢包（新北市 2026-09-18｜相符度 74%）',
+        '・皮夾（台中市 2026-09-19｜相符度 68%）',
+        '・錢包（桃園市 2026-09-19｜相符度 65%）',
+        '・皮夾（高雄市 2026-09-20｜相符度 61%）',
+        '',
+        `👉 看全部並認領：${DIULA_URL}`,
+        '（若已找到，可在協尋頁按「我找到了」停止通知）'
+    ].join('\n'),
+    icon: './images/diula-logo-192.png',
+    badge: './images/diula-logo-192.png', // Android 狀態列圖示
+    vibrate: [200, 100, 200, 100, 200], // 手機震動模式
+    data: {
+        url: DIULA_URL // 點擊通知時導向的網址
+    }
+};
+
 btnSendNotification.addEventListener('click', () => {
-    sendLocalNotification('你好，這是 PWA 測試！', {
-        body: '這是一則從前端觸發的本地推播通知 🚀',
-        icon: './images/icon-192x192.png',
-        badge: './images/icon-192x192.png', // Android 狀態列圖示
-        vibrate: [200, 100, 200, 100, 200], // 手機震動模式
-        data: {
-            url: window.location.href // 點擊通知時導向的網址
-        }
-    });
+    sendLocalNotification(DIULA_TITLE, DIULA_OPTIONS);
 });
 
 btnScheduleNotification.addEventListener('click', () => {
@@ -133,12 +149,7 @@ btnScheduleNotification.addEventListener('click', () => {
     btnScheduleNotification.disabled = true;
     
     setTimeout(() => {
-        sendLocalNotification('⏰ 排程通知已送達！', {
-            body: '這是您在 5 秒前排程的通知內容。',
-            icon: './images/icon-192x192.png',
-            vibrate: [500, 250, 500],
-            data: { url: window.location.href }
-        });
+        sendLocalNotification(DIULA_TITLE, DIULA_OPTIONS);
         btnScheduleNotification.disabled = false;
     }, 5000);
 });
