@@ -124,10 +124,10 @@ const DIULA_OPTIONS = {
         '🔔 DiuLa! 協尋通知',
         '找到 5 件可能是你要找的「皮夾/錢包」：',
         '・皮夾（台北市 2026-09-18｜相符度 87%）',
-        '・錢包（新北市 2026-09-18｜相符度 74%）',
-        '・皮夾（台中市 2026-09-19｜相符度 68%）',
-        '・錢包（桃園市 2026-09-19｜相符度 65%）',
-        '・皮夾（高雄市 2026-09-20｜相符度 61%）',
+        '・錢包（台北市 2026-09-18｜相符度 74%）',
+        '・皮夾（台北市 2026-09-19｜相符度 68%）',
+        '・錢包（台北市 2026-09-19｜相符度 65%）',
+        '・皮夾（台北市 2026-09-20｜相符度 61%）',
         '',
         `👉 看全部並認領：${DIULA_URL}`,
         '（若已找到，可在協尋頁按「我找到了」停止通知）'
@@ -145,13 +145,13 @@ btnSendNotification.addEventListener('click', () => {
 });
 
 btnScheduleNotification.addEventListener('click', () => {
-    log('計時器啟動，5秒後將發出通知...');
+    log('計時器啟動，10秒後將發出通知...');
     btnScheduleNotification.disabled = true;
     
     setTimeout(() => {
         sendLocalNotification(DIULA_TITLE, DIULA_OPTIONS);
         btnScheduleNotification.disabled = false;
-    }, 5000);
+    }, 10000);
 });
 
 
